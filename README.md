@@ -1,12 +1,12 @@
-# Recipe Chatbot - AI Evaluations Course
+# Recipe Chatbot - AI Evaluations Course with LangSmith
 
-This repository contains a complete AI evaluations course built around a Recipe Chatbot. Through 5 progressive homework assignments, you'll learn practical techniques for evaluating and improving AI systems.
+This repository is a modified version of [evaluations course repo](https://github.com/ai-evals-course/recipe-chatbot). It's set up to walk you through the homework assignments using [LangSmith](https://smith.langchain.com/), a platform that provides best-in-class tooling for observability, evals, and more.
 
 ## Quick Start
 
 1. **Clone & Setup**
    ```bash
-   git clone https://github.com/ai-evals-course/recipe-chatbot.git
+   git clone https://github.com/langchain-ai/recipe-chatbot.git
    cd recipe-chatbot
    python -m venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
@@ -14,6 +14,12 @@ This repository contains a complete AI evaluations course built around a Recipe 
    ```
 
 2. **Configure Environment**
+   Navigate to [LangSmith](https://smith.langchain.com) and sign up for an account if you don't already have one.
+   You'll need to create an API key by pressing `Settings` in the sidebar.
+   
+   Then, copy the `env.example` file to a `.env` file using the command below and paste the required
+   secrets there, including your newly created LangSmith key:
+
    ```bash
    cp env.example .env
    # Edit .env to add your model and API keys
@@ -25,29 +31,35 @@ This repository contains a complete AI evaluations course built around a Recipe 
    # Open http://127.0.0.1:8000
    ```
 
+The only differences between the recipe chatbot code in this repo and the main course repo are wrapping the LiteLLM call so that it traces to LangSmith:
+
+```python
+@traceable(name="LiteLLM", run_type="llm")
+def litellm_completion(model: str, messages: List[Dict[str, str]], **kwargs: Any):
+    completion = litellm.completion(
+        model=model,
+        messages=messages,
+        **kwargs,
+    )
+    return completion
+```
+
+And then importing and using this wrapped method instead of calling `litellm.completion` directly.
+
 ## Course Overview
 
 ### Homework Progression
 
-1. **HW1: Basic Prompt Engineering** (`homeworks/hw1/`)
+This repo contains modified homework instructions that take advantage of LangSmith's platform.
+Follow along using the updated `readme.md` for each assignment below:
+
+1. **HW1: Basic Prompt Engineering** (`homeworks/hw1/readme.md`)
    - Write system prompts and expand test queries
    - Walkthrough: See HW2 walkthrough for HW1 content
 
-2. **HW2: Error Analysis & Failure Taxonomy** (`homeworks/hw2/`)
+2. **HW2: Error Analysis & Failure Taxonomy** (`homeworks/hw2/readme.md`)
    - Systematic error analysis and failure mode identification
    - **Interactive Walkthrough**: `homeworks/hw2/hw2_solution_walkthrough.ipynb`
-
-3. **HW3: LLM-as-Judge Evaluation** (`homeworks/hw3/`)
-   - Automated evaluation using the `judgy` library
-   - **Interactive Walkthrough**: `homeworks/hw3/hw3_walkthrough.ipynb`
-
-4. **HW4: RAG/Retrieval Evaluation** (`homeworks/hw4/`)
-   - BM25 retrieval system with synthetic query generation
-   - **Interactive Walkthroughs**: 
-     - `homeworks/hw4/hw4_walkthrough.py` (Marimo)
-
-5. **HW5: Agent Failure Analysis** (`homeworks/hw5/`)
-   - Analyze conversation traces and failure patterns
 
 ### Key Features
 
@@ -67,42 +79,11 @@ recipe-chatbot/
 ├── homeworks/             # 5 progressive assignments
 │   ├── hw1/              # Prompt engineering
 │   ├── hw2/              # Error analysis (with walkthrough)
-│   ├── hw3/              # LLM-as-Judge (with walkthrough)
-│   ├── hw4/              # Retrieval eval (with walkthroughs)
-│   └── hw5/              # Agent analysis
 ├── annotation/            # Manual annotation tools
 ├── scripts/               # Utility scripts
 ├── data/                  # Datasets and queries
 └── results/               # Evaluation outputs
 ```
-
-## Running Homework Scripts
-
-Each homework includes complete pipelines. For example:
-
-**HW3 Pipeline:**
-```bash
-cd homeworks/hw3
-python scripts/generate_traces.py
-python scripts/label_data.py
-python scripts/develop_judge.py
-python scripts/evaluate_judge.py
-```
-
-**HW4 Pipeline:**
-```bash
-cd homeworks/hw4
-python scripts/process_recipes.py
-python scripts/generate_queries.py
-python scripts/evaluate_retrieval.py
-# Optional: python scripts/evaluate_retrieval_with_agent.py
-```
-
-## Additional Resources
-
-- **Annotation Interface**: Run `python annotation/annotation.py` for manual evaluation
-- **Bulk Testing**: Use `python scripts/bulk_test.py` to test multiple queries
-- **Trace Analysis**: All conversations saved as JSON for analysis
 
 ## Environment Variables
 

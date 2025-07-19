@@ -4,8 +4,13 @@
 Your main task is to get the repo to a starting point for Lesson 2.
 
 1.  **Write an Effective System Prompt**:
-    *   Open `backend/utils.py` and locate the `SYSTEM_PROMPT` constant. Currently, it's a naive placeholder.
-    *   Replace it with a well-crafted system prompt. Some things to think about:
+    *   After following the setup instructions in the main readme, start the chatbot with `uvicorn backend.main:app --reload`. Make sure you've set the required environment variables!
+    *   Ask the chatbot for a food recipe (e.g. `Give me a recipe for chicken and waffles.`).
+    *   Navigate to [LangSmith](https://smith.langchain.com). If you've set the proper environment variables, you should see a populated trace!
+    *   You should see a top-level `recipe-chatbot` run and a nested `LiteLLM` run. Click the `LiteLLM` run and click `Playground` in the top right to open the run in the LangSmith playground.
+    *   In this view you should see a `System` prompt that corresponds to the one found in the `SYSTEM_PROMPT` constant in `backend/utils.py`. Currently, it's a naive placeholder.
+    *   Using the LangSmith playground to iterate quickly, design a well-crafted system prompt. You can press the magic wand icon next to the system message to get an LLM-assisted [Canvas-like](https://openai.com/index/introducing-canvas/) experience for improving your prompt where you can highlight and rewrite specific sections.
+    *   Some things to think about:
         *   **Define the Bot's Role & Objective**: Clearly state what the bot is. (e.g., "You are a friendly and creative culinary assistant specializing in suggesting easy-to-follow recipes.")
         *   **Instructions & Response Rules**: Be specific.
             *   What should it *always* do? (e.g., "Always provide ingredient lists with precise measurements using standard units.", "Always include clear, step-by-step instructions.")
@@ -47,6 +52,11 @@ Your main task is to get the repo to a starting point for Lesson 2.
                 * For extra flavor, add a clove of garlic (smashed) and a sprig of rosemary to the pan while cooking.
                 * Ensure the pan is hot before adding the salmon for the best sear.
                 ```
+    *   When you're satisfied, save your prompt for further iteration and evaluation.
+        *   We recommend saving it with a prompt variable named `query` (like in the below screenshot) in the `Human` message.
+        *   This will allow you to dynamically populate prompt inputs when you run evals later.
+
+        ![](./imgs/playground.png)
 
 2.  **Expand and Diversify the Query Dataset**:
     *   Open `data/sample_queries.csv`.
@@ -62,10 +72,7 @@ Your main task is to get the repo to a starting point for Lesson 2.
     * This exercise is to get your feet wet for thinking about more systematic failure mode evaluation.
 
 3.  **Run the Bulk Test & Evaluate**:
-    *   After you have updated the system prompt in `backend/utils.py` and expanded the queries in `data/sample_queries.csv`, run the bulk test script:
-        ```bash
-        python scripts/bulk_test.py
-        ```
-    * Make sure a new CSV has been written.
+    *   After you have updated the system prompt in `backend/utils.py` and expanded the queries in `data/sample_queries.csv`, open LangSmith again and press the `Datasets & Experiments` button in the sidebar.
+    *   Press `New Dataset` in the top right, then select `Create from CSV or JSONL`. Upload your CSV, then type `query` as an `Input field` rather than `id`. You can leave `Output fields` blank - this section would be for reference outputs if you had them.
     
 Good luck!

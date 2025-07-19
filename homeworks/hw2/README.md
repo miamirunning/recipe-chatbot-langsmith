@@ -14,9 +14,11 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
 
 2.  **Generate Unique Combinations (Tuples):**
     *   Write a prompt for a Large Language Model (LLM) to generate 15-20 unique combinations (tuples) of these dimension values.
+        *   You can perform this step locally in a script, or in the LangSmith playground by pressing `Playground` in the sidebar.
 
 3.  **Generate Natural Language User Queries:**
     *   Write a second prompt for an LLM to take 5-7 of the generated tuples and create a natural language user query for your Recipe Bot for each selected tuple.
+        *   You can perform this step locally or open the LangSmith playground by pressing `Playground` in the sidebar for prompt engineering.
     *   Review these generated queries to ensure they are realistic and representative of how a user might interact with your bot.
 
     **Alternative for Query Generation:** If you prefer to skip the LLM-based query generation (steps 2 and 3 above), you may use the pre-existing queries and bot responses found in `homeworks/hw2/results_20250518_215844.csv` as the basis for your error analysis in Part 2. You can then proceed directly to the "Open Coding" step using this data.
@@ -24,8 +26,9 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
 ## Part 2: Initial Error Analysis (Ref Sec 3.2, 3.3, 3.4 of relevant course material)
 
 1.  **Run Bot on Synthetic Queries:**
-    *   Execute your Recipe Bot using the synthetic queries generated in Part 1.
-    *   Record the full interaction traces for each query.
+    *   Add the synthetic queries generated in Part 1 to the LangSmith dataset you created in the previous assignment.
+    *   Click `+ Experiment` in the top right corner of the screen. Select `Run in Playground`
+        *   If you prefer, you can also follow [these instructions](https://docs.smith.langchain.com/evaluation/how_to_guides/evaluate_llm_application) to create an experiment using code.
 
 2.  **Open Coding:** (an initial analysis step where you review interaction traces, assigning descriptive labels/notes to identify patterns and potential errors without preconceived categories, as detailed in Sec 3.2 of the provided chapter)
     *   Review the recorded traces.
@@ -38,15 +41,18 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
         *   **A concise one-sentence Definition** explaining the failure mode.
         *   **1-2 Illustrative Examples** taken directly from your bot's behavior during the tests. If a failure mode is plausible but not directly observed, you can provide a well-reasoned hypothetical example.
 
-4.  **[Optional] Spreadsheet for Analysis:**
-    *   Create a spreadsheet to systematically track your error analysis.
-    *   Include the following columns:
-        *   `Trace_ID` (a unique identifier for each interaction)
-        *   `User_Query` (the query given to the bot)
-        *   `Full_Bot_Trace_Summary` (a summary of the bot's full response and behavior)
-        *   `Open_Code_Notes` (your notes and observations from the open coding process)
-        *   A column for each of your 3-5 defined `Failure_Mode_Title`s (use 0 or 1 to indicate the presence or absence of that failure mode in the trace).
+4.  **[Optional] Annotation Queue for Analysis:**
+    *   Use an annotation queue to systematically track your error analysis.
+        *   Annotation queues allow you to examine your runs and mark them with various types of feedback.
+    *   Find your created experiment in LangSmith and select it using the checkbox.
+    *   Press the `Annotate` button and create a new it to an annotation queue.
+        *   ![](./imgs/annotate_experiment.png)
+        *   Because these runs are already part of your dataset, there's no need to select a default dataset. You won't be adding them back to a dataset as this would create duplicates!
+    *   Add a rubric to remind yourself your judging criteria, as well as feedback keys for each of your 3-5 defined `Failure modes`.
+    *   Create the queue with your experiment runs, then examine your runs one by one, assigning feedback as you progress.
+        *   Leave notes and observations from the open coding process in the `Reviewer notes` section.
+        *   When you have finished reviewing a run, just press `CMD + Enter` or the `Done` button, *not Add to Dataset*. These runs are already part of a dataset!
 
 ---
 
-**Note:** You have the flexibility to edit, create, or modify any files within the assignment structure as needed to fulfill the requirements of this homework. This includes, but is not limited to, the `failure_mode_taxonomy.md` file, scripts for running your bot, or any spreadsheets you create for analysis. 
+**Note:** You have the flexibility to edit, create, or modify any files within the assignment structure as needed to fulfill the requirements of this homework. This includes, but is not limited to, the `failure_mode_taxonomy.md` file, scripts for running your bot, or any spreadsheets you create for analysis.

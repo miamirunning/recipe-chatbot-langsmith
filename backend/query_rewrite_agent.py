@@ -6,7 +6,7 @@ Uses LLM to rewrite natural language queries into more effective search terms
 for BM25 retrieval, focusing on extracting key cooking terms and techniques.
 """
 
-import litellm
+from utils import litellm_completion
 from typing import List, Dict, Any, Optional
 from dotenv import load_dotenv
 import re
@@ -47,7 +47,7 @@ Important search keywords (space-separated):
 """
         
         try:
-            response = litellm.completion(
+            response = litellm_completion(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.2,
@@ -80,7 +80,7 @@ Optimized search query:
 """
         
         try:
-            response = litellm.completion(
+            response = litellm_completion(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.3,
@@ -113,7 +113,7 @@ Expanded query with synonyms:
 """
         
         try:
-            response = litellm.completion(
+            response = litellm_completion(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.4,

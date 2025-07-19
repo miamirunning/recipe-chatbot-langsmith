@@ -7,10 +7,11 @@ wrapper around litellm so the rest of the application stays decluttered.
 """
 
 import os
-from typing import Final, List, Dict
+from typing import Final, List, Dict, Any
 
 import litellm  # type: ignore
 from dotenv import load_dotenv
+from langsmith import traceable
 
 # Ensure the .env file is loaded as early as possible.
 load_dotenv(override=False)
@@ -32,6 +33,15 @@ MODEL_NAME: Final[str] = os.environ.get("MODEL_NAME", "gpt-4o-mini")
 
 
 # --- Agent wrapper ---------------------------------------------------------------
+
+@traceable(name="LiteLLM", run_type="llm")
+def litellm_completion(model: str, messages: List[Dict[str, str]], **kwargs: Any):
+    completion = litellm.completion(
+        model=model,
+        messages=messages,
+        **kwargs,
+    )
+    return completion
 
 def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]:  # noqa: WPS231
     """Call the underlying large-language model via *litellm*.
@@ -56,7 +66,7 @@ def get_agent_response(messages: List[Dict[str, str]]) -> List[Dict[str, str]]: 
     else:
         current_messages = messages
 
-    completion = litellm.completion(
+    completion = litellm_completion(
         model=MODEL_NAME,
         messages=current_messages, # Pass the full history
     )

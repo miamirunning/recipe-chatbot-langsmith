@@ -59,7 +59,10 @@ Follow along using the updated `readme.md` for each assignment below:
 
 2. **HW2: Error Analysis & Failure Taxonomy** (`homeworks/hw2/readme.md`)
    - Systematic error analysis and failure mode identification
-   - **Interactive Walkthrough**: `homeworks/hw2/hw2_solution_walkthrough.ipynb`
+   - **Interactive Walkthrough**:
+      - Code: `homeworks/hw2/hw2_solution_walkthrough.ipynb`
+      - [video 1](https://youtu.be/h9oAAAYnGx4?si=fWxN3NtpSbdD55cW): walkthrough of code
+      - [video 2](https://youtu.be/AKg27L4E0M8) : open & axial coding walkthrough
 
 ### Key Features
 

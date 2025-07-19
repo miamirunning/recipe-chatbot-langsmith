@@ -27,8 +27,10 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
 
 1.  **Run Bot on Synthetic Queries:**
     *   Add the synthetic queries generated in Part 1 to the LangSmith dataset you created in the previous assignment.
-    *   Click `+ Experiment` in the top right corner of the screen. Select `Run in Playground`
-        *   If you prefer, you can also follow [these instructions](https://docs.smith.langchain.com/evaluation/how_to_guides/evaluate_llm_application) to create an experiment using code.
+    *   Just as in homework 1, click `+ Experiment` in the top right corner of the screen. Select `Run in Playground` as before.
+    *   ![](./imgs/experiment-playground.png)
+        *   If you prefer, you can also follow [these instructions](https://docs.smith.langchain.com/evaluation) to create an experiment using code.
+    *   Select your saved prompt in the top left as before, then press `Start` to start another experiment over your new example queries.
 
 2.  **Open Coding:** (an initial analysis step where you review interaction traces, assigning descriptive labels/notes to identify patterns and potential errors without preconceived categories, as detailed in Sec 3.2 of the provided chapter)
     *   Review the recorded traces.
@@ -42,16 +44,22 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
         *   **1-2 Illustrative Examples** taken directly from your bot's behavior during the tests. If a failure mode is plausible but not directly observed, you can provide a well-reasoned hypothetical example.
 
 4.  **[Optional] Annotation Queue for Analysis:**
-    *   Use an annotation queue to systematically track your error analysis.
+    *   You can also use an annotation queue in combination with experiments to systematically track your error analysis.
         *   Annotation queues allow you to examine your runs and mark them with various types of feedback.
     *   Find your created experiment in LangSmith and select it using the checkbox.
-    *   Press the `Annotate` button and create a new it to an annotation queue.
+    *   Press the `Annotate` button, then create a new **annotation queue**.
         *   ![](./imgs/annotate_experiment.png)
-        *   Because these runs are already part of your dataset, there's no need to select a default dataset. You won't be adding them back to a dataset as this would create duplicates!
-    *   Add a rubric to remind yourself your judging criteria, as well as feedback keys for each of your 3-5 defined `Failure modes`.
-    *   Create the queue with your experiment runs, then examine your runs one by one, assigning feedback as you progress.
-        *   Leave notes and observations from the open coding process in the `Reviewer notes` section.
-        *   When you have finished reviewing a run, just press `CMD + Enter` or the `Done` button, *not Add to Dataset*. These runs are already part of a dataset!
+        *   ![](./imgs/create_queue.png)
+        *   Note: Because these runs are already part of your dataset, there's no need to select a default dataset. You won't be adding them back to a dataset as this would create duplicates!
+    *   Add a rubric to remind yourself your judging criteria, as well as feedback keys for each of the 3-5 `Failure modes` you defined above.
+    *   Press `Create` in the top right to finalize your queue.
+    *   Examine your runs one by one, assigning feedback as you progress.
+        *   Leave notes and observations as mentioned in the open coding process in the `Reviewer notes` section.
+        *   When you have finished reviewing a run, just press `CMD + Enter` or the `Done` button, *not Add to Dataset*. These runs are already part of a dataset - we're just labeling them!
+        *   ![](./imgs/queue_view.png)
+    *   Once you annotate all your runs, navigate back to the experiment you just created. You can see your annotated scores here.
+        *   ![](./imgs/experiment_with_scores.png)
+    *   Later on, you'll be able to compare this experiment and the scores against future experiments and scores. This is useful when refining an automated LLM-as-judge evaluator.
 
 ---
 

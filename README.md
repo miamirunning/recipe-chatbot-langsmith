@@ -55,7 +55,6 @@ Follow along using the updated `readme.md` for each assignment below:
 
 1. **HW1: Basic Prompt Engineering** (`homeworks/hw1/readme.md`)
    - Write system prompts and expand test queries
-   - Walkthrough: See HW2 walkthrough for HW1 content
 
 2. **HW2: Error Analysis & Failure Taxonomy** (`homeworks/hw2/readme.md`)
    - Systematic error analysis and failure mode identification

@@ -7,7 +7,7 @@ Your main task is to get the repo to a starting point for Lesson 2.
     *   After following the setup instructions in the main readme, start the chatbot with `uvicorn backend.main:app --reload`. Make sure you've set the required environment variables!
     *   Ask the chatbot for a food recipe (e.g. `Give me a recipe for chicken and waffles.`).
     *   Navigate to [LangSmith](https://smith.langchain.com). If you've set the proper environment variables, you should see a populated trace!
-    *   You should see a top-level `recipe-chatbot` run and a nested `LiteLLM` run. Click the `LiteLLM` run and click `Playground` in the top right to open the run in the LangSmith playground.
+    *   You should see a `LiteLLM` run. Click it, then click `Playground` in the top right to open the run in the LangSmith playground.
     *   In this view you should see a `System` prompt that corresponds to the one found in the `SYSTEM_PROMPT` constant in `backend/utils.py`. Currently, it's a naive placeholder.
     *   Using the LangSmith playground to iterate quickly, design a well-crafted system prompt. You can press the magic wand icon next to the system message to get an LLM-assisted [Canvas-like](https://openai.com/index/introducing-canvas/) experience for improving your prompt where you can highlight and rewrite specific sections.
     *   Some things to think about:

@@ -12,7 +12,7 @@ Your main task is to get the repo to a starting point for Lesson 2.
     *   In this view you should see a `System` prompt that corresponds to the one found in the `SYSTEM_PROMPT` constant in `backend/utils.py`. Currently, it's a naive placeholder.
     *   Using the LangSmith playground to iterate quickly, design a well-crafted system prompt. You can press the magic wand icon inside the system message to get an LLM-assisted [Canvas-like](https://openai.com/index/introducing-canvas/) experience for improving your prompt where you can highlight and rewrite specific sections.
         ![](./imgs/canvas.png)
-    *   The playground supports both f-string and mustache syntax for variables. You can define variables by wrapping text in curly brackets (`{}`). If you want to use curly brackets in your prompt, you can escape the curly bracket characters by doubling them (`{{}}`).
+    *   The playground supports both f-string and mustache syntax for variables. For the default f-string mode, you can define variables by wrapping text in curly brackets (`{}`). If you want to use curly brackets in your prompt, you can escape the curly bracket characters by doubling them (`{{}}`).
     *   Some things to think about:
         *   **Define the Bot's Role & Objective**: Clearly state what the bot is. (e.g., "You are a friendly and creative culinary assistant specializing in suggesting easy-to-follow recipes.")
         *   **Instructions & Response Rules**: Be specific.

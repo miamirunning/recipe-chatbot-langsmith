@@ -30,13 +30,14 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
     *   Add the synthetic queries generated in Part 1 to the LangSmith dataset you created in the previous assignment.
         *   Open your dataset, switch to the `Examples` pane, then press `+ Example` in the top right.
         ![](./imgs/add_examples.png)
-    *   Just as in homework 1, click `+ Experiment` in the top right corner of the screen. Select `Run in Playground` as before.
+        *   In the resulting window, add your synthetic queries one at a time to your dataset.
+    *   Then click `+ Experiment` in the top right corner of the screen. Select `Run in Playground` as you did in homework 1. You'll see a screen like this:
         ![](./imgs/experiment-playground.png)
-        *   If preferred, you can also follow [these instructions](https://docs.smith.langchain.com/evaluation) to create an experiment using code.
+        *   Alternatively, you can follow [these instructions](https://docs.smith.langchain.com/evaluation) to create an experiment using code.
     *   Select your saved prompt in the top left as before, then press `Start` to start another experiment over your new example queries.
 
 2.  **Examine Experiment Results:**
-    *   From the experiment view, perform **Open Coding**
+    *   While looking at the experiment results in LangSmith, perform **Open Coding**
         *   This is an initial analysis step where you review interaction traces, assign descriptive labels/notes to identify patterns and potential errors without preconceived categories, as detailed in Sec 3.2 of the provided chapter
     *   Take notes on initial themes, patterns, and potential errors or areas for improvement in the bot's responses.
     
@@ -48,21 +49,21 @@ This assignment focuses on performing an error analysis for your Recipe Bot.
         *   **1-2 Illustrative Examples** taken directly from your bot's behavior during the tests. If a failure mode is plausible but not directly observed, you can provide a well-reasoned hypothetical example.
 
 4.  **Annotation Queue for Analysis:**
-    *   We'll be using LangSmith's [annotation queues](https://docs.smith.langchain.com/evaluation/how_to_guides/annotation_queues) in combination with experiments and your notes from the previous two steps of the homework to systematically track your error analysis.
+    *   You can use LangSmith's [annotation queues](https://docs.smith.langchain.com/evaluation/how_to_guides/annotation_queues) in combination with experiments and your notes from the previous two steps of the homework to systematically track your error analysis.
         *   Annotation queues allow you to examine your runs and mark them with various types of feedback.
     *   Find your created experiment in LangSmith and select it using the checkbox.
     *   Press the `Annotate` button, then create a new **annotation queue**.
-        *   ![](./imgs/annotate_experiment.png)
-        *   ![](./imgs/create_queue.png)
+            ![](./imgs/annotate_experiment.png)
+            ![](./imgs/create_queue.png)
         *   Note: Because these runs are already part of your dataset, there's no need to select a default dataset. You won't be adding them back to a dataset as this would create duplicates!
     *   Add a rubric to remind yourself your judging criteria defined in the previous steps, as well as feedback keys for each of the 3-5 `Failure modes` you came up with.
     *   Press `Create` in the top right to finalize your queue.
     *   Examine your runs one by one, assigning feedback as you progress.
         *   Leave notes and observations as mentioned in the open coding process in the `Reviewer notes` section.
         *   When you have finished reviewing a run, just press `CMD + Enter` or the `Done` button, *not Add to Dataset*. These runs are already part of a dataset - we're just labeling them!
-        *   ![](./imgs/queue_view.png)
+            ![](./imgs/queue_view.png)
     *   Once you annotate all your runs, navigate back to the experiment you just created. You can see your annotated scores here.
-        *   ![](./imgs/experiment_with_scores.png)
+            ![](./imgs/experiment_with_scores.png)
     *   Later on, you'll be able to compare this experiment and the scores against future experiments and scores. This is useful when refining an automated LLM-as-judge evaluator.
 
 ---

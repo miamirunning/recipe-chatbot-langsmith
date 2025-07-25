@@ -59,7 +59,7 @@ Your main task is to get the repo to a starting point for Lesson 2.
         *   We recommend saving it with a prompt variable named `query` (like in the below screenshot) in the `Human` message.
         *   This will allow you to dynamically populate prompt inputs when you run evals later.
             ![](./imgs/variable.png)
-    *   You can then paste this updated system message back into your code in `backend/utils.py`.
+    *   You can then paste this updated system message back into your code in `backend/utils.py` to update your locally running chatbot.
 
 2.  **Expand and Diversify the Query Dataset**:
     *   Open `data/sample_queries.csv`.

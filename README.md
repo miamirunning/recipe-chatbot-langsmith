@@ -53,10 +53,10 @@ And then importing and using this wrapped method instead of calling `litellm.com
 This repo contains modified homework instructions that take advantage of LangSmith's platform.
 Follow along using the updated `README.md` for each assignment below:
 
-1. **HW1: Basic Prompt Engineering** (`homeworks/hw1/README.md`)
+1. **HW1: Basic Prompt Engineering** ([`homeworks/hw1/README.md`](./homeworks/hw1/README.md))
    - Write system prompts and expand test queries
 
-2. **HW2: Error Analysis & Failure Taxonomy** (`homeworks/hw2/README.md`)
+2. **HW2: Error Analysis & Failure Taxonomy** ([`homeworks/hw2/README.md`](./homeworks/hw2/README.md))
    - Systematic error analysis and failure mode identification
    - **Interactive Walkthrough**:
       - Code: `homeworks/hw2/hw2_solution_walkthrough.ipynb`

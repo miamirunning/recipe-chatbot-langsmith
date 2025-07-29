@@ -79,6 +79,13 @@ Your main task is to get the repo to a starting point for Lesson 2.
     *   Press `New Dataset` in the top right, then select `Create from CSV or JSONL`. Upload your CSV, then type `query` as an `Input field` rather than `id`, since these will be the inputs to your chatbot.
     *   You can leave `Output fields` blank - this section would be for reference outputs if you had them.
         ![](./imgs/create-dataset.png)
+        *   You can also add more examples from the LangSmith UI, by pressing `Add Example` in the top right of the `Examples` tab.
+        ![](./imgs/add-example.png)
+        *   You can also generate synthetic examples in LangSmith using an LLM with the `Add AI-Generated Examples` option. This requires a dataset schema, which you can create by pressing `Edit Dataset` under the menu in the top right.
+        ![](./imgs/edit-dataset.png)
+            *   Set a string property named `query` in the input schema. Leave output schema blank and press `Submit` to save your changes
+            ![](./dataset-schema.png)
+        *   Now you can use `Add AI-Generated Examples` to generate additional LLM-generated examples!
     *   After creating your dataset, run your first experiment over your update chatbot prompt by clicking the `Experiment` button in the top right and selecting `Run in Playground`. This will open the LangSmith playground in `Evaluate` mode.
     *   From here, select the prompt you created and saved in the first step.
         ![](./imgs/experiment-playground.png)
